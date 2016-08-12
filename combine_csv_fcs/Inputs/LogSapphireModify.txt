@@ -1,0 +1,27 @@
+
+UPDATE LogSapphire SET Asptime = STR_TO_DATE(Asptime,'%%m/%%d/%%Y %%k:%%i') 
+WHERE Asptime REGEXP('^[0-9]{1,2}/[0-9]{1,2}/[0-9]{4} [0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}$');\n
+SHOW WARNINGS;
+
+UPDATE LogSapphire SET Asptime = STR_TO_DATE(Asptime,'%%m/%%d/%%Y %%k:%%i') 
+WHERE Asptime REGEXP('^[0-9]{1,2}/[0-9]{1,2}/[0-9]{4} [0-9]{1,2}:[0-9]{1,2}$');\n
+SHOW WARNINGS;
+
+
+UPDATE LogSapphire SET Asptime = STR_TO_DATE(Asptime,'%%m/%%d/%%Y %%k:%%i') 
+WHERE Asptime REGEXP('^[0-9]{1,2}-[0-9]{1,2}-[0-9]{4} [0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}$');\n
+SHOW WARNINGS;
+
+UPDATE LogSapphire SET Asptime = STR_TO_DATE(Asptime,'%%m/%%d/%%Y %%k:%%i') 
+WHERE Asptime REGEXP('^[0-9]{1,2}-[0-9]{1,2}-[0-9]{4} [0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}.0$');\n
+SHOW WARNINGS;
+
+ALTER TABLE LogSapphire
+CHANGE Asptime Asptime  DATETIME;
+SHOW WARNINGS;\n
+
+
+
+
+
+
