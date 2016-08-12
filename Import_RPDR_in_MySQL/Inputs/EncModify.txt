@@ -1,0 +1,7 @@
+
+
+ALTER TABLE Enc
+ADD CONSTRAINT fk_enc_empi 
+FOREIGN KEY (empi) 
+REFERENCES Mrn(empi) ;
+SHOW WARNINGS;\n

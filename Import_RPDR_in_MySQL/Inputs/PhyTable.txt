@@ -1,0 +1,17 @@
+SELECT 'table Phy';\n
+CREATE TABLE IF NOT EXISTS Phy (
+empi INT UNSIGNED NOT NULL,
+phy_date VARCHAR(15), 
+test_descr VARCHAR(120),
+code_type VARCHAR(20),
+code VARCHAR(20),
+result VARCHAR(300),
+unit VARCHAR(30),
+hosp VARCHAR(10), 
+in_out_pt VARCHAR(30),
+enc_nb VARCHAR(100)
+) 
+ENGINE=INNODB; \n
+
+ALTER TABLE Phy ADD UNIQUE INDEX idx_phy(empi,test_descr,code,result);\n
+SHOW WARNINGS;\n

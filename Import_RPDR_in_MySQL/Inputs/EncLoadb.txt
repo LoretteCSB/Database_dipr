@@ -1,0 +1,5 @@
+' INTO TABLE Enc FIELDS TERMINATED BY '|'  ENCLOSED BY '' LINES TERMINATED BY '\\n' IGNORE 1 LINES(empi,mrn_type, mrn,enc_nb, enc_status,hosp,in_out_pt,service_line,@dummy, admit_date,
+disch_date,los,clinic, admit_source,disch_dispo,@dummy,admit_dia,
+princ_dia,dia1,dia2,dia3,dia4, dia5,dia6, 
+dia7, dia8, dia9,dia10,@dummy,@dummy,@dummy);
+SHOW WARNINGS;\n

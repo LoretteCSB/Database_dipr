@@ -1,0 +1,5 @@
+ALTER TABLE Phy
+ADD CONSTRAINT fk_phy_empi
+FOREIGN KEY (empi) 
+REFERENCES Mrn(empi) ;\n
+SHOW WARNINGS;

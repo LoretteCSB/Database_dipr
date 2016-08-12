@@ -1,0 +1,7 @@
+
+
+ALTER TABLE Trn
+ADD CONSTRAINT fk_trn_empi 
+FOREIGN KEY (empi) 
+REFERENCES Mrn(empi) ;\n
+SHOW WARNINGS;\n

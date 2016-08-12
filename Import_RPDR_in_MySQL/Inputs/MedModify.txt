@@ -1,0 +1,5 @@
+ALTER TABLE Med
+ADD CONSTRAINT fk_med_empi 
+FOREIGN KEY (empi) 
+REFERENCES Mrn(empi) ;\n
+SHOW WARNINGS;\n

@@ -1,0 +1,19 @@
+SELECT 'table Dia';\n
+CREATE TABLE IF NOT EXISTS Dia (
+empi INT UNSIGNED,
+mrn_type VARCHAR(15),
+mrn INT,
+dia_date VARCHAR(10),
+dia_name VARCHAR(250), 
+code_type VARCHAR(15),
+code VARCHAR(15),  
+abn_flag VARCHAR (15),  
+clinic VARCHAR(100),
+hosp VARCHAR(10),
+in_out_pt VARCHAR(25), 
+enc_nb VARCHAR(60)
+) ENGINE=INNODB;\n
+
+ALTER TABLE Dia ADD UNIQUE INDEX idx_dia(empi,dia_date,code);\n
+SHOW WARNINGS;\n
+

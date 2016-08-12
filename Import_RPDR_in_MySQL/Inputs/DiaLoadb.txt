@@ -1,0 +1,3 @@
+'
+INTO TABLE Dia FIELDS TERMINATED BY '|'  ENCLOSED BY '' LINES TERMINATED BY '\\n' IGNORE 1 LINES (empi,mrn_type,mrn,dia_date,dia_name,code_type,code,abn_flag,@dummy,clinic,hosp,in_out_pt,enc_nb); \n
+SHOW WARNINGS;

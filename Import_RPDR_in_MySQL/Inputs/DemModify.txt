@@ -1,0 +1,11 @@
+
+
+
+
+
+ALTER TABLE Dem
+ADD CONSTRAINT fk_dem_empi 
+FOREIGN KEY (empi)
+REFERENCES Mrn(empi) ;\n
+SHOW WARNINGS;\n
+

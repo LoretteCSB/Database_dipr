@@ -1,0 +1,20 @@
+'
+INTO TABLE Med
+FIELDS TERMINATED BY '|'  ENCLOSED BY '' 
+LINES TERMINATED BY '\\n'
+IGNORE 1 LINES(empi,@dummy,mrn,med_date,med_name,code_type,code,quantity,@dummy,clinic,hosp,in_out_pt,enc_nb,@dummy);
+SHOW WARNINGS;
+
+UPDATE Med SET med_date= STR_TO_DATE(med_date,'%%m/%%d/%%Y') 
+WHERE med_date REGEXP('^[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}$');
+SHOW WARNINGS;
+
+ALTER TABLE Med
+CHANGE med_date med_date DATE;
+SHOW WARNINGS;
+
+ALTER TABLE Med
+ADD CONSTRAINT fk_med_no_dupl_empi 
+FOREIGN KEY (empi) 
+REFERENCES Dem(empi) ;\n
+SHOW WARNINGS;

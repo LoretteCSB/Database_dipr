@@ -1,0 +1,5 @@
+ALTER TABLE Mee
+ADD CONSTRAINT fk_mee_empi 
+FOREIGN KEY (empi) 
+REFERENCES Mrn(empi) ;\n
+SHOW WARNINGS;\n

@@ -1,0 +1,25 @@
+SELECT 'table Lab';\n
+CREATE TABLE IF NOT EXISTS Lab (
+empi INT UNSIGNED,
+mrn_type VARCHAR(15),
+mrn INT,
+lab_date VARCHAR(20),
+group_id VARCHAR(40),
+loinc VARCHAR(20),
+test_id VARCHAR(40),
+test_descr VARCHAR(80),
+result VARCHAR(300),
+result_txt VARCHAR(300),
+ref_unit VARCHAR(60),
+ref_range VARCHAR(60),
+toxic_range VARCHAR(60),
+abn_flag VARCHAR(5),
+specimen_type VARCHAR(225),
+correction_flag CHAR(1),
+accession VARCHAR(25),
+source VARCHAR(10)
+) 
+ENGINE=INNODB;  \n
+
+ALTER TABLE Lab ADD UNIQUE INDEX idx_lab(empi,lab_date,test_descr,result);\n
+SHOW WARNINGS;\n

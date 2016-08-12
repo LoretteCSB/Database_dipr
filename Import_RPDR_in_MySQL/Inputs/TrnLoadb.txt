@@ -1,0 +1,7 @@
+'
+INTO TABLE Trn
+FIELDS TERMINATED BY '|'  ENCLOSED BY '' 
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(empi,hosp,@dummy,trn_date,test_descr,abn_flag,status_flag,comment,result,accession);
+SHOW WARNINGS;

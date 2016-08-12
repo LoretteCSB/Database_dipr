@@ -1,0 +1,6 @@
+'
+INTO TABLE Prc
+FIELDS TERMINATED BY '|'  ENCLOSED BY '' 
+IGNORE 1 LINES(empi,@dummy,@dummy,prc_date,prc_name,code_type,code,
+prc_flag,quantity,@dummy,clinic,hosp,in_out_pt,enc_nb);
+SHOW WARNINGS;

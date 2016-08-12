@@ -1,0 +1,19 @@
+\%%'
+INTO TABLE  Lab
+FIELDS TERMINATED BY '|'  ENCLOSED BY '' LINES TERMINATED BY '\\n' IGNORE 1 LINES (empi,@dummy,mrn,lab_date,group_id,loinc,
+test_id,test_descr,result,result_txt,abn_flag,ref_unit,ref_range,toxic_range,
+specimen_type,@dummy,correction_flag,@dummy,@dummy,accession,source);\n
+SHOW WARNINGS;
+
+UPDATE Lab SET lab_date = STR_TO_DATE(lab_date,'%%m/%%d/%%Y %%k:%%i') 
+WHERE lab_date REGEXP('^[0-9]{1,2}/[0-9]{1,2}/[0-9]{4} [0-9]{1,2}:[0-9]{1,2}$');\n
+SHOW WARNINGS;
+ALTER TABLE Lab
+CHANGE lab_date lab_date  DATETIME;
+SHOW WARNINGS;
+
+ALTER TABLE Lab
+ADD CONSTRAINT fk_lab_no_dupl_empi 
+FOREIGN KEY (empi) 
+REFERENCES Dem(empi) ;\n
+SHOW WARNINGS;

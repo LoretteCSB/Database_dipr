@@ -1,0 +1,3 @@
+' INTO TABLE Phy FIELDS TERMINATED BY '|'  ENCLOSED BY '' LINES TERMINATED BY '\\n' IGNORE 1 LINES(empi,@dummy,@dummy,
+phy_date,test_descr,code_type,code ,result, unit,@dummy,@dummy,hosp,in_out_pt,enc_nb);
+SHOW WARNINGS;

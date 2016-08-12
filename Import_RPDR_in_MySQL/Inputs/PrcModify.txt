@@ -1,0 +1,6 @@
+
+ALTER TABLE Prc
+ADD CONSTRAINT fk_prc_empi
+FOREIGN KEY (empi) 
+REFERENCES Mrn(empi) ;\n
+SHOW WARNINGS;\n

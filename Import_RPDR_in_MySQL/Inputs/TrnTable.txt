@@ -1,0 +1,16 @@
+SELECT 'table Trn';\n
+CREATE TABLE IF NOT EXISTS Trn (
+empi INT UNSIGNED,
+hosp VARCHAR(10), 
+trn_date VARCHAR(60),
+test_descr VARCHAR(150),
+abn_flag VARCHAR(5),
+status_flag VARCHAR(120),
+comment VARCHAR(225),
+result VARCHAR(200),
+accession VARCHAR(60)
+) 
+ENGINE=INNODB;  \n
+
+ALTER TABLE Trn ADD UNIQUE INDEX idx_trn(empi,trn_date,test_descr,result);\n
+SHOW WARNINGS;\n

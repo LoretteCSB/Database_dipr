@@ -1,0 +1,15 @@
+SELECT 'table Med';\n
+CREATE TABLE IF NOT EXISTS Med (
+empi INT UNSIGNED NOT NULL,
+med_date VARCHAR(20),
+med_name VARCHAR(225),
+code_type VARCHAR(20),
+code VARCHAR(20),
+quantity VARCHAR(100),
+clinic VARCHAR(100),
+hosp VARCHAR(100),
+in_out_pt VARCHAR(30),
+enc_nb VARCHAR(100)) 
+ENGINE=INNODB; \n
+ALTER TABLE Med ADD UNIQUE INDEX idx_med(empi,med_date,med_name,quantity);\n
+SHOW WARNINGS;\n

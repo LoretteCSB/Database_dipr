@@ -1,0 +1,62 @@
+' INTO TABLE Enc FIELDS TERMINATED BY '|'  ENCLOSED BY '' LINES TERMINATED BY '\\n' IGNORE 1 LINES(empi,@dummy, mrn,enc_nb, enc_status,hosp,in_out_pt,service_line,@dummy, admit_date,
+disch_date,los,clinic, admit_source,disch_dispo,@dummy,admit_dia,
+princ_dia,dia1,dia2,dia3,dia4, dia5,dia6, 
+dia7, dia8, dia9,dia10,@dummy,@dummy,@dummy);
+SHOW WARNINGS;
+
+
+UPDATE Enc SET admit_date= STR_TO_DATE(admit_date,'%%m/%%d/%%Y') 
+WHERE admit_date REGEXP('^[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}$');
+SHOW WARNINGS;
+ALTER TABLE Enc
+CHANGE admit_date admit_date DATE;
+SHOW WARNINGS;
+UPDATE Enc SET disch_date= STR_TO_DATE(disch_date,'%%m/%%d/%%Y') 
+WHERE disch_date REGEXP('^[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}$');
+SHOW WARNINGS;
+UPDATE Enc SET disch_date= NULL
+WHERE disch_date NOT REGEXP('^[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}');
+SHOW WARNINGS;
+ALTER TABLE Enc
+CHANGE disch_date disch_date DATE;
+SHOW WARNINGS;
+CREATE TABLE IF NOT EXISTS Enc_no_dupl (
+empi INT UNSIGNED,
+mrn VARCHAR(80), 
+enc_nb VARCHAR(100),
+enc_status VARCHAR(100),
+hosp VARCHAR(10), 
+in_out_pt VARCHAR(30),
+service_line VARCHAR(100),
+admit_date VARCHAR(20),
+disch_date VARCHAR(20),
+los VARCHAR(4),
+clinic VARCHAR(120),
+admit_source VARCHAR(120),
+disch_dispo VARCHAR(120),
+admit_dia VARCHAR(225),
+princ_dia VARCHAR(225),
+dia1 VARCHAR(225),
+dia2 VARCHAR(225),
+dia3 VARCHAR(225),
+dia4 VARCHAR(225),
+dia5 VARCHAR(225),
+dia6 VARCHAR(225),
+dia7 VARCHAR(225),
+dia8 VARCHAR(225),
+dia9 VARCHAR(225),
+dia10 VARCHAR(225)
+) 
+ENGINE=INNODB; 
+
+INSERT INTO Enc_no_dupl SELECT empi,mrn,enc_nb,enc_status,hosp,in_out_pt,service_line,admit_date,
+disch_date,los,clinic,admit_source,disch_dispo,admit_dia,princ_dia,dia1,dia2,
+dia3,dia4,dia5,dia6,dia7,dia8,dia9,dia10 FROM Enc;
+SHOW WARNINGS;
+ALTER IGNORE TABLE Enc_no_dupl ADD UNIQUE INDEX idx_enc(empi,admit_date,admit_dia,princ_dia,dia1);
+SHOW WARNINGS;
+ALTER TABLE Enc_no_dupl
+ADD CONSTRAINT fk_enc_no_dupl_empi 
+FOREIGN KEY (empi) 
+REFERENCES Dem(empi) ;
+SHOW WARNINGS;

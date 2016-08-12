@@ -1,0 +1,18 @@
+SELECT 'table Dem';\n
+CREATE TABLE IF NOT EXISTS Dem (
+empi INT UNSIGNED NOT NULL,
+mrn_type VARCHAR(40),
+mrn VARCHAR(80),
+gender VARCHAR(10),
+dob VARCHAR(15), 
+race VARCHAR(60),
+marital_status VARCHAR(60),
+religion VARCHAR(60),
+is_veteran VARCHAR(20),
+vital_status VARCHAR(80),
+dod VARCHAR(15)
+) 
+ENGINE=INNODB; \n
+
+ALTER TABLE Dem ADD UNIQUE INDEX idx_dem(empi);\n
+SHOW WARNINGS;\n

@@ -1,0 +1,6 @@
+'
+INTO TABLE Med
+FIELDS TERMINATED BY '|'  ENCLOSED BY '' 
+LINES TERMINATED BY '\\n'
+IGNORE 1 LINES(empi,@dummy,@dummy,med_date,med_name,code_type,code,quantity,@dummy,clinic,hosp,in_out_pt,enc_nb,@dummy);
+SHOW WARNINGS;

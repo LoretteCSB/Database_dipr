@@ -1,0 +1,7 @@
+
+ALTER TABLE Lab
+ADD CONSTRAINT fk_lab_empi 
+FOREIGN KEY (empi) 
+REFERENCES Mrn(empi) ;\n
+SHOW WARNINGS;
+

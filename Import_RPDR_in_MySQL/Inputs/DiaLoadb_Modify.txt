@@ -1,0 +1,30 @@
+'
+INTO TABLE Dia FIELDS TERMINATED BY '|'  ENCLOSED BY '' LINES TERMINATED BY '\\n' IGNORE 1 LINES (empi,@dummy,mrn,diag_date,diag_name,code_type,code,diag_flag,provider,clinic,hospital,in_out_pt,enc_nb); \n
+SHOW WARNINGS;
+UPDATE Dia SET diag_date= STR_TO_DATE(diag_date,'%%m/%%d/%%Y') WHERE diag_date REGEXP('^[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}$'); \n
+ALTER TABLE Dia CHANGE diag_date diag_date DATE; \n
+SHOW WARNINGS;
+
+CREATE TABLE IF NOT EXISTS Dia_no_dupl (
+empi INT UNSIGNED,
+mrn VARCHAR(80),  
+diag_date VARCHAR(10),
+diag_name VARCHAR(225), 
+code_type VARCHAR(100),
+code VARCHAR(15),  
+diag_flag VARCHAR (15),    
+provider VARCHAR(225),
+clinic VARCHAR(100),
+hospital VARCHAR(100),
+in_out_pt VARCHAR(25), 
+enc_nb VARCHAR(60))ENGINE=INNODB; \n
+
+INSERT INTO Dia_no_dupl SELECT empi,mrn,diag_date,diag_name,code_type,code,diag_flag,provider,clinic,hospital,in_out_pt,enc_nb  FROM Dia; \n
+SHOW WARNINGS;
+ALTER IGNORE TABLE Dia_no_dupl ADD UNIQUE INDEX idx_dia(empi,diag_date,diag_name);\n
+SHOW WARNINGS;
+ALTER TABLE Dia_no_dupl
+ADD CONSTRAINT fk_dia_no_dupl_empi 
+FOREIGN KEY (empi) 
+REFERENCES Dem(empi) ;\n
+SHOW WARNINGS;

@@ -1,0 +1,15 @@
+' INTO TABLE Dem FIELDS TERMINATED BY '|'  ENCLOSED BY '' LINES TERMINATED BY '\\n' IGNORE 1 LINES (empi,mrn_type,mrn,gender,dob,@dummy,language,race,marital_status,religion,is_veteran,@dummy,country,vital_status,dod);\n
+SHOW WARNINGS;
+UPDATE Dem SET dob= STR_TO_DATE(dob,'%%m/%%d/%%Y') WHERE dob REGEXP('^[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}$');\n
+SHOW WARNINGS;
+ALTER TABLE Dem CHANGE dob dob DATE;\n
+SHOW WARNINGS;
+UPDATE Dem SET dod= STR_TO_DATE(dod,'%%m/%%d/%%Y') WHERE dod REGEXP('^[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}');\n
+SHOW WARNINGS;
+UPDATE Dem SET dod= NULL WHERE dod NOT REGEXP('^[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}');\n
+SHOW WARNINGS;
+ALTER TABLE Dem CHANGE dod dod DATE DEFAULT NULL;\n
+SHOW WARNINGS;
+UPDATE Dem SET dob= STR_TO_DATE(dob,'%%m/%%d/%%Y') WHERE dob REGEXP('^[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}$');\n
+\n
+SHOW WARNINGS;

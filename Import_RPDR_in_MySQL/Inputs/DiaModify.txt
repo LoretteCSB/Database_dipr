@@ -1,0 +1,8 @@
+
+ALTER TABLE Dia
+ADD CONSTRAINT fk_dia_empi 
+FOREIGN KEY (empi) 
+REFERENCES Mrn(empi) ;\n
+SHOW WARNINGS;\n
+
+

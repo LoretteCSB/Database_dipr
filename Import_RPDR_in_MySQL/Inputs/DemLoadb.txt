@@ -1,0 +1,2 @@
+' INTO TABLE Dem FIELDS TERMINATED BY '|'  ENCLOSED BY '' LINES TERMINATED BY '\\n' IGNORE 1 LINES (empi,mrn_type,mrn,gender,dob,@dummy,@dummy,race,marital_status,religion,is_veteran,@dummy,@dummy,vital_status,dod);\n
+SHOW WARNINGS;

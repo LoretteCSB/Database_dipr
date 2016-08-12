@@ -1,0 +1,6 @@
+'
+INTO TABLE  Lab
+FIELDS TERMINATED BY '|'  ENCLOSED BY '' LINES TERMINATED BY '\\n' IGNORE 1 LINES (empi,mrn_type,mrn,lab_date,group_id,loinc,
+test_id,test_descr,result,result_txt,abn_flag,ref_unit,ref_range,toxic_range,
+specimen_type,@dummy,correction_flag,@dummy,@dummy,accession,source);\n
+SHOW WARNINGS;
